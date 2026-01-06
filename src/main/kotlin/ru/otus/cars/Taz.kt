@@ -36,4 +36,9 @@ object Taz: Car {
     override fun wheelToLeft(degrees: Int) {
         throw NotImplementedError("Руля нет")
     }
+
+    override fun toString(): String {
+        return "Taz"
+    }
+    override var tank = FuelTank( 30, TankMouthType.FOR_UNNOWN_FUEL)
 }

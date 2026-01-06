@@ -16,6 +16,13 @@ fun main() {
     techChecks()
     println("\n===> Taz...")
     println(Taz.color)
+
+    val carsQueue = listOf( Vaz2107.build(Car.Plates("123", 90)),
+        Vaz2108.build(Car.Plates("567", 23)),
+        Taz)
+
+    val fuelStation = GazStation(carsQueue)
+    fuelStation.ReFuelCars()
 }
 
 fun driveCars() {
@@ -89,5 +96,17 @@ fun repairEngine(car: VazPlatform) {
     when (car.engine) {
         is VazEngine.LADA_2107 -> println("Чистка карбюратора у двигателя объемом ${car.engine.volume} куб.см у машины $car")
         is VazEngine.SAMARA_2108 -> println("Угол зажигания у двигателя объемом ${car.engine.volume} куб.см у машины $car")
+    }
+}
+fun showTankFuelAmount( car:Car ){
+    val tankFuelAmount:Int = car.tank.getFuelCurrAmount()
+    var carNumber:String = ""
+
+    try{
+        carNumber = car.plates.number
+        println("В вашей машине $carNumber  $tankFuelAmount литров топлива")
+    }
+    catch( e:NotImplementedError ){
+        println("${e.message}")
     }
 }
